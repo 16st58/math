@@ -23,8 +23,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //총알에 닿았을때
-        if (other.tag == "Bullet")
-        {
+        if (other.tag == "Bullet") {
             //Play Particle
             //ParticleSystem instance = Instantiate(explosionParticle, transform.position, Quaternion.identity);
             //instance.Play();
@@ -37,6 +36,9 @@ public class Enemy : MonoBehaviour
                 Match.enemyNum -= 1;
                 Destroy(gameObject);
             }
+        } else if(other.tag == "Player") {
+            player.health -= 1;
+            Destroy(gameObject);
         }
     }
 }

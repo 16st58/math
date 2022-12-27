@@ -12,6 +12,7 @@ public class player : MonoBehaviour
     public float curShotDelay;//발사간 속도
     public float maxShotDelay;//발사 최대속도
     float angle; //플레이어 각도
+    public static float health = 10.0f;
 
     public GameObject gameplayer;//플래이어 오브젝트
     public GameObject bulletObject;//무기 오브젝트
@@ -26,10 +27,12 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(1)){
-            OnRotationAndMove();
+        if(health <= 0) {
+            Debug.Log("죽음");
         }
-        if(Input.GetMouseButton(0)){
+        if(Input.GetMouseButton(1)) {
+            OnRotationAndMove();
+        } else if(Input.GetMouseButton(0)){
             Fire();
         }
         Reload();
